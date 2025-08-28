@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProduct } from "../services/productServices";
+import { deleteProduct, getProduct } from "../services/productServices";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
@@ -17,6 +17,15 @@ export default function Product() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await deleteProduct(id);
+      loadProduct();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     loadProduct();
   }, []);
@@ -26,13 +35,18 @@ export default function Product() {
       <h1>Product list</h1>
       <Link to="/product/add">Add new product</Link>
       {loading && <h1>Loading...</h1>}
-      {products.map((product) => (
-        <ul key={product.id}>
-          <li>{product.name}</li>
-          <li>{product.price}</li>
-          <Link to={`/product/edit/${product.id}`}>Edit</Link>
-        </ul>
-      ))}
+      {products.length > 0 ? (
+        products.map((product) => (
+          <ul key={product.id}>
+            <li>{product.name}</li>
+            <li>{product.price}</li>
+            <Link to={`/product/edit/${product.id}`}>Edit</Link>
+            <button onClick={(e) => handleDelete(product.id)}>Delete</button>
+          </ul>
+        ))
+      ) : (
+        <p>No product found</p>
+      )}
     </>
   );
 }

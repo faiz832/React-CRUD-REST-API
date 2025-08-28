@@ -23,3 +23,9 @@ export const editProduct = async (id, product) => {
   const res = await apiClient.put(`/products/${id}`, product);
   return res.data;
 };
+
+// DELETE DATA
+export const deleteProduct = async (id) => {
+  const res = await apiClient.delete(`/products/${id}`);
+  return res.data;
+};
