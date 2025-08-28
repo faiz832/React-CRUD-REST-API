@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteProduct, getProduct } from "../services/productServices";
+import { deleteProduct, getProduct, getProducts } from "../services/productServices";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const loadProduct = async () => {
     try {
-      const data = await getProduct();
+      const data = await getProducts(search);
       setProducts(data);
     } catch (err) {
       console.log(err);
@@ -27,13 +28,14 @@ export default function Product() {
   };
 
   useEffect(() => {
-    loadProduct();
-  }, []);
+    loadProduct(search);
+  }, [search]);
 
   return (
     <>
       <h1>Product list</h1>
       <Link to="/product/add">Add new product</Link>
+      <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} />
       {loading && <h1>Loading...</h1>}
       {products.length > 0 ? (
         products.map((product) => (
