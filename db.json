@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "name": "Tas",
+      "price": "50000"
+    },
+    {
+      "name": "Baju",
+      "price": "100000"
+    }
+  ]
+}
