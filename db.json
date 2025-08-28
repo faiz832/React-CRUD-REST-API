@@ -1,12 +1,19 @@
 {
   "products": [
     {
+      "id": "1",
       "name": "Tas",
       "price": "50000"
     },
     {
+      "id": "2",
       "name": "Baju",
       "price": "100000"
+    },
+    {
+      "name": "Celana",
+      "price": "50000",
+      "id": "FqdKQvY"
     }
   ]
 }

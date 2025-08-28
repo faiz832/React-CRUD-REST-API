@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProduct } from "../services/productServices";
 
 export default function Product() {
@@ -23,7 +24,7 @@ export default function Product() {
   return (
     <>
       <h1>Product list</h1>
-
+      <Link to="/product/add">Add new product</Link>
       {loading && <h1>Loading...</h1>}
       {products.map((product) => (
         <ul key={product.id}>
