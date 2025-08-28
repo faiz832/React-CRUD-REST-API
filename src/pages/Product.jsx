@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { deleteProduct, getProduct, getProducts } from "../services/productServices";
+import useDebounce from "../hooks/useDebounce";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search);
 
-  const loadProduct = async () => {
+  const loadProduct = async (q = "") => {
     try {
-      const data = await getProducts(search);
+      const data = await getProducts(q);
       setProducts(data);
     } catch (err) {
       console.log(err);
@@ -28,8 +30,8 @@ export default function Product() {
   };
 
   useEffect(() => {
-    loadProduct(search);
-  }, [search]);
+    loadProduct(debouncedSearch);
+  }, [debouncedSearch]);
 
   return (
     <>

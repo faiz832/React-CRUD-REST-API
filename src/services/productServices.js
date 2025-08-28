@@ -31,7 +31,7 @@ export const deleteProduct = async (id) => {
 };
 
 // SEARCH DATA
-export const getProducts = async (q) => {
+export const getProducts = async (q = "") => {
   const res = await apiClient.get(`/products?q=${q}`);
   return res.data;
 };
