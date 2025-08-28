@@ -30,6 +30,7 @@ export default function Product() {
         <ul key={product.id}>
           <li>{product.name}</li>
           <li>{product.price}</li>
+          <Link to={`/product/edit/${product.id}`}>Edit</Link>
         </ul>
       ))}
     </>

@@ -2,16 +2,16 @@
   "products": [
     {
       "id": "1",
-      "name": "Tas",
+      "name": "Tas Ku",
       "price": "50000"
     },
     {
       "id": "2",
-      "name": "Baju",
-      "price": "100000"
+      "name": "Baju Kamu",
+      "price": "19000"
     },
     {
-      "name": "Celana",
+      "name": "Celana Ku",
       "price": "50000",
       "id": "FqdKQvY"
     }

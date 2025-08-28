@@ -11,3 +11,15 @@ export const addProduct = async (product) => {
   const res = await apiClient.post("/products", product);
   return res.data;
 };
+
+// GET DATA BY ID
+export const getProductById = async (id) => {
+  const res = await apiClient.get(`/products/${id}`);
+  return res.data;
+};
+
+// EDIT DATA
+export const editProduct = async (id, product) => {
+  const res = await apiClient.put(`/products/${id}`, product);
+  return res.data;
+};
